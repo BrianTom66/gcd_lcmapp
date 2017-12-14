@@ -11,6 +11,25 @@ public class MainActivity extends AppCompatActivity {
     EditText gcd_ans1;
     EditText lcm_ans2;
 
+    private static int gcd(int a, int b)
+    {
+        while(b>0)
+        {
+            int tmp = b;
+            b = a % b;
+            a = tmp;
+        }
+        return a;
+    }
+
+    private static int lcm(int a, int b)
+    {
+        int lcm;
+        lcm = a * (b/gcd(a, b));
+        return lcm;
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
