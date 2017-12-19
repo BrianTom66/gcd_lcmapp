@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/GCD_LCMAPP.iml" filepath="$PROJECT_DIR$/GCD_LCMAPP.iml" />
-      <module fileurl="file://$PROJECT_DIR$/gcd_lcd_app/app.iml" filepath="$PROJECT_DIR$/gcd_lcd_app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gcd_lcd_app/gcd_lcd_app.iml" filepath="$PROJECT_DIR$/gcd_lcd_app/gcd_lcd_app.iml" />
     </modules>
   </component>
 </project>
