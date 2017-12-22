@@ -29,23 +29,19 @@ public class MainActivity extends AppCompatActivity {
 
     private int MIN_MARK = 1;
     private int MAX_MARK = 200;
+
     //private void setRegion(EditText et)
-    private void setRegion( final EditText et)
-    {
+    private void setRegion(final EditText et) {
         et.addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (start > 1)
-                {
-                    if (MIN_MARK != -1 && MAX_MARK != -1)
-                    {
+                if (start > 1) {
+                    if (MIN_MARK != -1 && MAX_MARK != -1) {
                         int num = Integer.parseInt(s.toString());
-                        if (num > MAX_MARK)
-                        {
+                        if (num > MAX_MARK) {
                             s = String.valueOf(MAX_MARK);
                             et.setText(s);
-                        }
-                        else if(num < MIN_MARK)
+                        } else if (num < MIN_MARK)
                             s = String.valueOf(MIN_MARK);
                         return;
                     }
@@ -59,36 +55,29 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void afterTextChanged(Editable s)
-            {
-                if (s != null && !s.equals(""))
-                {
-                    if (MIN_MARK != -1 && MAX_MARK != -1)
-                    {
+            public void afterTextChanged(Editable s) {
+                if (s != null && !s.equals("")) {
+                    if (MIN_MARK != -1 && MAX_MARK != -1) {
                         int markVal = 0;
-                        try
-                        {
+                        try {
                             markVal = Integer.parseInt(s.toString());
-                        }
-                        catch (NumberFormatException e)
-                        {
+                        } catch (NumberFormatException e) {
                             markVal = 0;
                         }
-                        if (markVal > MAX_MARK)
-                        {
+                        if (markVal > MAX_MARK) {
                             Toast.makeText(getBaseContext(), "數字不能超過200", Toast.LENGTH_SHORT).show();
                             et.setText(String.valueOf(MAX_MARK));
-                        } else if(markVal == 0) {
-                            Toast.makeText(getBaseContext(), "數字不能為0", Toast.LENGTH_SHORT).show();
-                            et.setText(String.valueOf(MIN_MARK));
+                        } else if (markVal == 0) {
+                            Toast.makeText(getBaseContext(), "數字不能為0與空值", Toast.LENGTH_SHORT).show();
+
                         }
 
                     }
                 }
+
             }
         });
     }
-
 
 
     private static int gcd(int a, int b) {
@@ -178,6 +167,10 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     default:
                 }
+                eta.setText("");
+                etb.setText("");
+                etc.setText("");
+                etd.setText("");
             }
 
             @Override
@@ -193,38 +186,49 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int a1, b1, c1, d1;
-                int gcd_num=0, lcm_num=0;
+                int gcd_num = 0, lcm_num = 0;
 
+                try {
 
-                if (choice == 2) {
-                    a1 = Integer.parseInt(eta.getText().toString());
-                    b1 = Integer.parseInt(etb.getText().toString());
-                    int[] number_arr = {a1, b1};
-                    gcd_num = gcd(number_arr);
-                    lcm_num = lcm(number_arr);
+                    if (choice == 2) {
+                        a1 = Integer.parseInt(eta.getText().toString());
+                        b1 = Integer.parseInt(etb.getText().toString());
+                        int[] number_arr = {a1, b1};
+                        gcd_num = gcd(number_arr);
+                        lcm_num = lcm(number_arr);
 
-                } else if (choice == 3) {
-                    a1 = Integer.parseInt(eta.getText().toString());
-                    b1 = Integer.parseInt(etb.getText().toString());
-                    c1 = Integer.parseInt(etc.getText().toString());
-                    int[] number_arr = {a1, b1, c1};
-                    gcd_num = gcd(number_arr);
-                    lcm_num = lcm(number_arr);
+                    } else if (choice == 3) {
+                        a1 = Integer.parseInt(eta.getText().toString());
+                        b1 = Integer.parseInt(etb.getText().toString());
+                        c1 = Integer.parseInt(etc.getText().toString());
+                        int[] number_arr = {a1, b1, c1};
+                        gcd_num = gcd(number_arr);
+                        lcm_num = lcm(number_arr);
 
-                } else if (choice == 4) {
-                    a1 = Integer.parseInt(eta.getText().toString());
-                    b1 = Integer.parseInt(etb.getText().toString());
-                    c1 = Integer.parseInt(etc.getText().toString());
-                    d1 = Integer.parseInt(etd.getText().toString());
+                    } else if (choice == 4) {
+                        a1 = Integer.parseInt(eta.getText().toString());
+                        b1 = Integer.parseInt(etb.getText().toString());
+                        c1 = Integer.parseInt(etc.getText().toString());
+                        d1 = Integer.parseInt(etd.getText().toString());
 
-                    int[] number_arr = {a1, b1, c1, d1};
-                    gcd_num = gcd(number_arr);
-                    lcm_num = lcm(number_arr);
+                        int[] number_arr = {a1, b1, c1, d1};
+                        gcd_num = gcd(number_arr);
+                        lcm_num = lcm(number_arr);
 
+                    }
+                } catch (NumberFormatException e) {
+                    eta.setText("");
+                    etb.setText("");
+                    etc.setText("");
+                    etd.setText("");
+                    gcd_ans1.setText("");
+                    lcm_ans2.setText("");
                 }
 
-                gcd_ans1.setText(gcd_num + "");
-                lcm_ans2.setText(lcm_num + "");
+                if (gcd_num != 0 && lcm_num != 0) {
+                    gcd_ans1.setText(gcd_num + "");
+                    lcm_ans2.setText(lcm_num + "");
+                }
 
             }
 
